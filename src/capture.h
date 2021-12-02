@@ -12,27 +12,27 @@ protected:
 	bool autoRead_{true};
 
 protected:
-	bool doOpen() override { close(); /* signal function */ };
+	bool doOpen() override { /* close(); */ /* signal function */ };
 	bool doClose() override;
 
 public:
-	typedef enum {
+	enum PathType {
 		InPath,
 		OutOfPath
-	} PathType;
+	};
 
 public:
-	Packet::Result read(Packet* packet);
-	Packet::Result write(Buf buf);
-	Packet::Result write(Packet* packet);
-	Packet::Result writeMtuSplit(Packet* packet, size_t mtu, Packet::Dlt dlt, Duration msleepTime = 1);
+	virtual Packet::Result read(Packet* packet);
+	virtual Packet::Result write(Buf buf);
+	virtual Packet::Result write(Packet* packet);
+	virtual Packet::Result writeMtuSplit(Packet* packet, size_t mtu, Packet::Dlt dlt, Duration msleepTime = 1);
 	virtual Packet::Result relay(Packet* packet);
 	virtual Packet::Result drop(Packet* packet);
 
 	virtual Packet::Dlt dlt() { return Packet::Null; }
 	virtual PathType pathType() { return OutOfPath; }
 
-// required check
+// required check (about thread)
 /*protected:
 	struct Thread : GThread {
 		Thread(GCapture* capture) : GThread(capture) {}
@@ -46,6 +46,7 @@ public:
 
 	virtual void run();
 
+// signal function
 // signals:
 // 	void captured(GPacket* packet);
 };

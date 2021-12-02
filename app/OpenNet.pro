@@ -18,8 +18,6 @@ SOURCES += \
     ../src/intf.cpp \
     ../src/intflist.cpp \
     ../src/ip.cpp \
-    ../src/ip6.cpp \
-    ../src/ip6hdr.cpp \
     ../src/iphdr.cpp \
     ../src/iphdr.cpp \
     ../src/ippacket.cpp \
@@ -49,8 +47,6 @@ HEADERS += \
     ../src/intf.h \
     ../src/intflist.h \
     ../src/ip.h \
-    ../src/ip6.h \
-    ../src/ip6hdr.h \
     ../src/iphdr.h \
     ../src/iphdr.h \
     ../src/ippacket.h \

@@ -25,45 +25,11 @@ bool GCapture::doClose() {
 	return res;
 }*/
 
-Packet::Result Capture::read(Packet* packet) {
-  (void)packet;
-  // virtual function call
-	std::cout << "virtual function call" << std::endl;
-	return Packet::Fail;
-}
-
-Packet::Result Capture::write(Buf buf) {
-	(void)buf;
-	// virtual function call
-	std::cout << "virtual function call" << std::endl;
-	return Packet::Fail;
-}
-
-Packet::Result Capture::write(Packet* packet) {
-	(void)packet;
-	// virtual function call
-	std::cout << "virtual function call" << std::endl;
-	return Packet::Fail;
-}
-
-Packet::Result Capture::relay(Packet* packet) {
-	(void)packet;
-	// virtual function call
-	std::cout << "virtual function call" << std::endl;
-	return Packet::Fail;
-}
-
-Packet::Result Capture::drop(Packet* packet) {
-	(void)packet;
-  // virtual function call
-	std::cout << "virtual function call" << std::endl;
-	return Packet::Ok;
-}
-
 void Capture::run() {
 	EthPacket ethPacket;
 	IpPacket ipPacket;
 
+	// data link type
 	Packet* packet;
 	switch(dlt()) {
 		case Packet::Eth:
@@ -81,17 +47,15 @@ void Capture::run() {
 		if (res == Packet::Eof || res == Packet::Fail) break;
 		// emit captured(packet);
 		
-    // required check
-    /*if (pt == InPath) {
+    if (pt == InPath) {
 			if (packet->ctrl.block_)
 				res = drop(packet);
 			else
 				res = relay(packet);
 			if (res != Packet::Ok) {
-        // warning
-        std::cout << "relay return " << res << std::endl;
+        std::cout << "[!] relay - return " << res << std::endl;
 			}
-    }*/
+    }
 	}
 }
 	// emit closed();

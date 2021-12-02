@@ -1,17 +1,16 @@
 #pragma once
+
 #include "ip.h"
 #include "mac.h"
+
 struct Buf
 {
-    Buf(){};
-    Buf(unsigned char* data, size_t size);
-    gbyte* data_;
+    Buf();
+    Buf(pbyte data, size_t size);
+
+    pbyte data_;
     size_t size_;
-    bool valid() {
-        return data_ != nullptr;
-    }
-    void clear(){
-        data_= nullptr;
-        size_ = 0;
-    }
+
+    bool valid();
+    void clear();
 };

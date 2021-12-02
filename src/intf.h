@@ -11,11 +11,11 @@ struct Intf
     int index_;
     string desc_;
 
-    Intf(){}
-    Ip gateway(){return gateway_;}
-    Mac mac(){return mac_;}
-    Ip ip(){return ip_;}
-    Ip mask(){return mask_;}
+    Intf();
+    Ip gateway() { return gateway_; }
+    Mac mac() { return mac_; }
+    Ip ip() { return ip_; }
+    Ip mask() { return mask_; }
     string name() const { return name_; }
-    bool isSameLanIp(Ip ip_){return (ip_and_mask_) == (ip_ & mask_);}
+    bool isSameLanIp(Ip ip_) { return (ip_and_mask_) == (ip_ & mask_); }
 };

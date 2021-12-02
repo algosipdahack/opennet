@@ -1,7 +1,9 @@
 #include "packet.h"
 
-struct IpPacket : Packet {
-	IpPacket() : Packet() {
+struct IpPacket : Packet
+{
+	IpPacket() : Packet()
+	{
 		dlt_ = Packet::Ip;
 	}
 

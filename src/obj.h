@@ -1,7 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include "base.h"
+#include "opennet.h"
 
 struct Obj {
 public:
