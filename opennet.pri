@@ -37,3 +37,4 @@ win32 {
     INCLUDEPATH += $$PWD/../../curl/include
     DEPENDPATH += $$PWD/../../curl/include
 }
+

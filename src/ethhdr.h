@@ -1,5 +1,5 @@
 #include "buf.h"
-
+#pragma pack(push, 1)
 struct EthHdr
 {
     // ethertype (type_)
@@ -18,3 +18,4 @@ struct EthHdr
     Mac dmac() { return dmac_; }
 };
 typedef EthHdr *PEthHdr;
+#pragma pack(pop)

@@ -28,7 +28,6 @@ public:
 	virtual Packet::Result writeMtuSplit(Packet* packet, size_t mtu, Packet::Dlt dlt, Duration msleepTime = 1);
 	virtual Packet::Result relay(Packet* packet);
 	virtual Packet::Result drop(Packet* packet);
-
 	virtual Packet::Dlt dlt() { return Packet::Null; }
 	virtual PathType pathType() { return OutOfPath; }
 

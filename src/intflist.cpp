@@ -61,7 +61,8 @@ IntfList::IntfList()
   }
   pcap_freealldevs(allDevs);
 }
-#include <net/if.h>    // for ifreq
+
+#include <net/if.h> // for ifreq
 #include <sys/ioctl.h> // for SIOCGIFHWADDR
 #include <unistd.h>    // for close
 static Mac getMac(char *intfName)

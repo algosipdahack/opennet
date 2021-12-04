@@ -13,26 +13,23 @@ void Packet::clear()
   icmpHdr_ = nullptr;
 }
 
-void Packet::parse()
-{
-  ethHdr_ = PEthHdr(buf_.data_);
-  switch (ethHdr_->type())
-  {
-  case EthHdr::Ip4:
-  {
-    byte *p = buf_.data_ + sizeof(EthHdr);
-    uint8_t proto;
-    switch (*p & 0xF0)
-    {
-    case 0x40: // version 4
-      ipHdr_ = PIpHdr(p);
-      proto = ipHdr_->p();
-      p += ipHdr_->hl() * 4;
-      break;
-    default:
-      proto = 0; // unknown
-      break;
-    }
+void Packet::parse() {
+    ethHdr_ = PEthHdr(buf_.data_);
+    switch (ethHdr_->type()) {
+        case EthHdr::Ip4:
+        case EthHdr::Ip6: {
+            byte* p = buf_.data_ + sizeof(EthHdr);
+            uint8_t proto;
+            switch (*p & 0xF0) {
+                case 0x40: // version 4
+                    ipHdr_ = PIpHdr(p);
+                    proto = ipHdr_->p();
+                    p += ipHdr_->hlen() * 4;
+                    break;
+                default:
+                    proto = 0; // unknown
+                    break;
+            }
 
     // protocol check
     switch (proto)
