@@ -7,20 +7,21 @@
 #include "icmphdr.h"
 struct Packet
 {
-    Packet() { clear();}
-    enum Result{
+    Packet() { clear(); }
+
+    enum Result {
       Ok = 1,
       Fail = -1,
       Eof = -2,
       None = 0,
     };
 
-    typedef enum {
+    enum Dlt {
         Eth, // DLT_EN10MB (1)
         Ip, // DLT_RAW (228)
         Dot11, // DLT_IEEE802_11_RADIO (127)
         Null, // DLT_NULL (0)
-    } Dlt; // data link type
+    }; // data link type
 
     EthHdr* ethHdr_{nullptr};
     IpHdr* ipHdr_{nullptr};
@@ -34,6 +35,7 @@ struct Packet
     Buf udpData_;
     Buf tcpData_;
 
+    // control (block, non-block)
     struct {
         bool block_{false};
     } ctrl;

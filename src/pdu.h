@@ -4,4 +4,3 @@
 #include "net.h";
 #include "mac.h";
 #include "ip.h";
-#include "ip6.h";

@@ -7,7 +7,7 @@ struct PcapDevice : PcapCapture
     int mtu_{0};
     string intfName_{""};
     pcap_t* pcap_{nullptr};
-    std::vector <gbyte> tempBuffer_;
+    std::vector <byte> tempBuffer_;
 
     Rtm& rtm() { return rtm_; }
     Intf* intf() { return intf_; }

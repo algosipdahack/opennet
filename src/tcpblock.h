@@ -21,7 +21,7 @@ protected:
     EthPacket blockEthPacket_;
     IpPacket blockIpPacket_;
 
-    gbyte* blockBuf_{nullptr};
+    pbyte blockBuf_{nullptr};
     bool doOpen() override;
     bool doClose() override;
 

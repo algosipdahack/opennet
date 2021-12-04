@@ -51,17 +51,17 @@ bool Obj::close() {
     state_ = Closed;
 	// emit closed();
 	return true;
-}
+}*/
 
 bool Obj::doOpen() {
   // virtual function call
-  std::cout << "virtual function call" << std::endl;
+  std::cout << "[X] virtual function call" << std::endl;
 	return false;
 }
 
 bool Obj::doClose() {
   // virtual function call
-	std::cout << "virtual function call" << std::endl;
+	std::cout << "[X] virtual function call" << std::endl;
 	return false;
 }
 Packet::Result Obj::writeMtuSplit(Packet* packet, size_t mtu) {
